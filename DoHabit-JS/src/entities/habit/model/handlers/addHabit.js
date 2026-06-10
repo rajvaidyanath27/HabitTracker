@@ -1,0 +1,24 @@
+import mapHabitData from '../../lib/mapHabitData';
+import { formatDate } from '@shared/lib/date-time';
+/**
+ * Adds a new habit to the beginning of the list.
+ */
+function addHabit(params) {
+  const {
+    habits,
+    payload: {
+      data
+    }
+  } = params;
+  const now = new Date();
+  const newHabit = {
+    id: crypto.randomUUID(),
+    ...mapHabitData(data),
+    completedDays: [],
+    currentProgress: 0,
+    lastActivityDate: formatDate(now),
+    createdAt: now.getTime()
+  };
+  return [newHabit, ...habits];
+}
+export default addHabit;

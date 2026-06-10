@@ -1,0 +1,10 @@
+import { formatDate, getYesterday } from '@shared/lib/date-time';
+
+/**
+ * Checks if yesterday was completed by looking at the latest two entries.
+ */
+function isYesterdayCompleted(completedDays) {
+  const yStr = formatDate(getYesterday());
+  return completedDays[0]?.date === yStr || completedDays[1]?.date === yStr;
+}
+export { isYesterdayCompleted };

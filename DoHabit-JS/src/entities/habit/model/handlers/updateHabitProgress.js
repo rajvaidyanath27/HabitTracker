@@ -1,0 +1,46 @@
+import { getTodayProgress } from '../../lib/getTodayProgress';
+import updateHabitById from '../../lib/updateHabitById';
+/**
+ * Updates or toggles the progress for a specific habit for the current day.
+ */
+function updateHabitProgress(params) {
+  const {
+    habits,
+    payload: {
+      habitId,
+      isLongPress
+    }
+  } = params;
+  return updateHabitById(habits, habitId, habit => {
+    const {
+      today,
+      progress,
+      isCompleted
+    } = getTodayProgress(habit);
+
+    // Avoid toggling or modifying already completed status on long press
+    if (isCompleted && isLongPress) return habit;
+    if (isCompleted) {
+      // Remove from history and reset progress (toggle logic)
+      return {
+        ...habit,
+        currentProgress: 0,
+        lastActivityDate: today,
+        completedDays: habit.completedDays.slice(1)
+      };
+    }
+
+    // Max out progress if long pressed, otherwise increment by one
+    const nextProgress = isLongPress ? habit.frequency : progress + 1;
+    const isNowCompleted = nextProgress >= habit.frequency;
+    return {
+      ...habit,
+      currentProgress: nextProgress,
+      lastActivityDate: today,
+      completedDays: isNowCompleted ? [{
+        date: today
+      }, ...habit.completedDays] : habit.completedDays
+    };
+  });
+}
+export default updateHabitProgress;

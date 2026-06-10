@@ -1,0 +1,14 @@
+/* page */
+.page {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	height: 100%;
+}
+
+/* footer */
+.footer {
+	margin-top: auto;
+	color: gray;
+	text-align: center;
+}

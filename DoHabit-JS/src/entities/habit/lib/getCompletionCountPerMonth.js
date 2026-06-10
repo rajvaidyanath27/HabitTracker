@@ -1,0 +1,13 @@
+/**
+ * Calculates the total number of fully completed days for each month.
+ */
+function getCompletionCountPerMonth(completedDays) {
+  // Initialize array for all 12 months with zeros (0-11)
+  const counts = new Array(12).fill(0);
+  for (const day of completedDays) {
+    const month = new Date(day.date).getMonth();
+    counts[month] += 1;
+  }
+  return counts;
+}
+export { getCompletionCountPerMonth };
