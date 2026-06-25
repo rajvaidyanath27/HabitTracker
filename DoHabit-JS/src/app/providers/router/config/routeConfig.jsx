@@ -8,6 +8,7 @@ import { MenuPage } from '@pages/menu';
 import { HabitStatisticsPage } from '@pages/habit-statistics';
 import { ROUTES } from '@shared/lib/router';
 import { ModalLayout } from '@shared/ui';
+import { AiCoachPage } from "@pages/ai-coach";
 
 /**
  * Individual route definitions for modal sub-pages.
@@ -47,15 +48,22 @@ export const modalChildRoutes = {
  *
  * @see {@link ROUTES}
  */
-export const routeConfig = [{
-  path: '/',
-  element: <MainPage />
-}, {
-  path: '/modal',
-  element: <ModalLayout />,
-  children: Object.values(modalChildRoutes)
-}, {
-  /* Fallback for undefined routes */
-  path: '*',
-  element: <Navigate to='/' />
-}];
+export const routeConfig = [
+  {
+    path: "/",
+    element: <MainPage />,
+  },
+  {
+    path: "/ai-coach",
+    element: <AiCoachPage />,
+  },
+  {
+    path: "/modal",
+    element: <ModalLayout />,
+    children: Object.values(modalChildRoutes),
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
+  },
+];

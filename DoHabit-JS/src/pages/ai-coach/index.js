@@ -1,0 +1,1 @@
+export { AiCoachPage } from "./ui/AiCoachPage";
