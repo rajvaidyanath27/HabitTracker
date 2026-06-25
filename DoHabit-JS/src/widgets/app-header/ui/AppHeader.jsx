@@ -11,7 +11,7 @@ function AppHeader() {
   return <header className={styles.header}>
 			<div className={styles.logoWrapper}>
 				<span className={styles.logo} />
-				<h1>DoHabit</h1>
+				<h1>HabitOS</h1>
 			</div>
 
 			<nav>

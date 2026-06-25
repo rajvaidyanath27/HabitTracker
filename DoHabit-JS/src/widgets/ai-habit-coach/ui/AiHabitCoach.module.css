@@ -1,0 +1,354 @@
+/* AiHabitCoach.module.css */
+
+/* Skip this @import if AiCoachCard.module.css already loads these fonts globally. */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+.wrapper {
+  --surface-start: #141822;
+  --surface-end: #10131a;
+  --surface-soft: #161a23;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text-primary: #f4f2ee;
+  --text-secondary: #93989f;
+  --text-muted: #6b7077;
+  --ember-start: #ffb070;
+  --ember-end: #ff6b6b;
+  --violet-start: #8b5cf6;
+  --violet-end: #ec4899;
+
+  width: 100%;
+  max-width: 1050px;
+  margin: 40px auto;
+  padding: 32px;
+
+  background: linear-gradient(165deg, var(--surface-start) 0%, var(--surface-end) 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  font-family: "Inter", system-ui, sans-serif;
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+}
+
+/* Header */
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.iconWrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from -90deg,
+    var(--ember-start),
+    var(--ember-end) 75%,
+    transparent 75% 100%
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+}
+
+.iconCore {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: linear-gradient(135deg, var(--violet-start), var(--violet-end));
+  box-shadow: 0 4px 14px -4px rgba(139, 92, 246, 0.55);
+}
+
+.title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Form */
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.textarea:hover {
+  border-color: var(--border-strong);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--ember-end);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.12);
+}
+
+.generateBtn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--ember-start), var(--ember-end));
+  color: #1a0f0a;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 24px -10px rgba(255, 107, 107, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.generateBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -10px rgba(255, 107, 107, 0.55);
+}
+
+.generateBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.generateBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 15, 10, 0.3);
+  border-top-color: #1a0f0a;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Plan section */
+
+.planSection {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.planTitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.emptyState {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.habitList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.habitCard {
+  position: relative;
+  padding: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all .25s ease;
+}
+
+.habitCard::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  background:linear-gradient(#8b5cf6,#ec4899);
+}
+
+.habitCard:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,.18);
+}
+
+.habitCard:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.habitTitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+.habitDescription {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 0 12px;
+}
+
+.frequencyBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 176, 112, 0.12);
+  color: var(--ember-start);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+}
+
+.addHabitBtn{
+    margin-top:10px;
+}
+
+.frequencyBadge{
+    margin-bottom:18px;
+}
+
+.addHabitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.addHabitBtn:hover {
+  background: linear-gradient(135deg, var(--violet-start), var(--violet-end));
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.addHabitBtn svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 560px) {
+  .wrapper {
+    padding: 20px;
+    margin: 16px auto;
+    border-radius: 14px;
+  }
+  .headerRow {
+    gap: 12px;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .generateBtn {
+    width: 100%;
+    justify-content: center;
+  }
+  .planSection {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .habitCard,
+  .spinner,
+  .generateBtn,
+  .addHabitBtn {
+    animation: none;
+    transition: none;
+  }
+}

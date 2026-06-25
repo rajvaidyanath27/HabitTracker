@@ -1,47 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
 .header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	height: var(--header-height);
-	padding: 0 10px;
+	padding: 0 18px;
 	background-color: var(--bg);
 }
 
-/* logo */
+/* Logo */
 .logoWrapper {
-	/* outline: 1px solid tomato; */
 	display: flex;
-	gap: 8px;
 	align-items: center;
+	gap: 12px;
 }
 
 .logo {
 	display: block;
-	width: 26px;
-	height: 26px;
+	width: 34px;
+	height: 34px;
 	background: url("/assets/brand/logo512-alpha.png");
 	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .header h1 {
-	font-size: 1.6rem;
+	margin: 0;
+	font-family: "Manrope", sans-serif;
+	font-size: 2rem;
+	font-weight: 800;
+	letter-spacing: -0.04em;
+	color: #ffffff;
 }
 
-/* btnsWrapper */
+/* Right Icons */
 .navList {
 	display: flex;
-	gap: 16px;
 	align-items: center;
+	gap: 18px;
 }
 
 .navItem {
-	width: 32px;
-	height: 32px;
+	width: 36px;
+	height: 36px;
 	padding: 0;
-	background-color: unset;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: #fff;
+	transition: transform .2s ease, opacity .2s ease;
+}
+
+.navItem:hover {
+	transform: scale(1.08);
+	opacity: .85;
 }
 
 .navItem svg {
-	width: 22px;
-	height: 22px;
+	width: 24px;
+	height: 24px;
 }

@@ -1,32 +1,63 @@
 import { useNavigate } from "react-router";
+import styles from "./AiCoachCard.module.css";
 
 function AiCoachCard() {
   const navigate = useNavigate();
 
+  const handleActivate = () => navigate("/ai-coach");
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleActivate();
+    }
+  };
+
   return (
     <div
-      onClick={() => navigate("/ai-coach")}
-      style={{
-        padding: "20px",
-        border: "1px solid #333",
-        borderRadius: "12px",
-        cursor: "pointer",
-        marginBottom: "25px",
-      }}
+      className={styles.card}
+      role="link"
+      tabIndex={0}
+      onClick={handleActivate}
+      onKeyDown={handleKeyDown}
+      aria-label="Launch AI Habit Coach"
     >
-      <h2>🤖 AI Habit Coach</h2>
+      <span className={styles.badge}>
+        <span className={styles.badgeDot} aria-hidden="true" />
+      </span>
 
-      <p>Create personalized habits using AI.</p>
+      <div className={styles.header}>
+        <div className={styles.iconWrap} aria-hidden="true">
+          <span className={styles.iconRing} />
+          <span className={styles.iconCore}>
+            <svg viewBox="0 0 24 24" fill="#fff">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+            </svg>
+          </span>
+        </div>
+        <h2 className={styles.title}>AI Habit Coach</h2>
+      </div>
 
-      <button
-        style={{
-          marginTop: "15px",
-          padding: "10px 18px",
-          cursor: "pointer",
-        }}
-      >
-        Launch AI Coach →
-      </button>
+      <p className={styles.description}>
+        Get a plan built around your goals, your schedule, and how you
+        actually stick to things.
+      </p>
+
+      <div className={styles.footer}>
+        <span>Launch AI Coach</span>
+        <span className={styles.arrowCircle} aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </span>
+      </div>
     </div>
   );
 }
